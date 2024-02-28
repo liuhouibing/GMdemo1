@@ -1,6 +1,9 @@
 using CatalogService as service from '../../srv/interaction_srv';
 
 annotate service.Interactions_Header with @(
+
+    //odata.draft.enabled:true,
+
     UI.LineItem : [
         {
             $Type : 'UI.DataField',
