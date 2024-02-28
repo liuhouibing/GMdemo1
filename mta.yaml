@@ -43,9 +43,20 @@ modules:
       url: ~{srv-url}
   - name: GMdemo1-auth
   parameters:
-    disk-quota: 256M
+    disk-quota: 550M
     keep-existing-routes: true
-    memory: 256M
+    memory: 550M
+
+- name: interaction_items
+  type: html5
+  path: app/interaction_items
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install    
+    supported-platforms: []
+
 resources:
 - name: GMdemo1-auth
   type: org.cloudfoundry.managed-service
