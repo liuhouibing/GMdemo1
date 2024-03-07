@@ -1,32 +1,38 @@
 {
-  "name": "GMdemo1",
-  "version": "1.0.0",
-  "description": "A simple CAP project.",
-  "repository": "<Add your repository here>",
-  "license": "UNLICENSED",
-  "private": true,
-  "dependencies": {
-    "@sap/cds": "^7",
-    "@sap/cds-hana": "^2",
-    "@sap/xssec": "^3",
-    "express": "^4"
-  },
-  "devDependencies": {
-    "@cap-js/sqlite": "^1",
-    "@sap/cds-dk": "^7",
-    "@sap/ux-specification": "^1.120.4"
-  },
-  "scripts": {
-    "start": "cds-serve",
-    "watch-interaction_items": "cds watch --open interaction_items/webapp/index.html?sap-ui-xx-viewCache=false"
-  },
-  "cds": {
-    "requires": {
-      "auth": "xsuaa",
-      "db": "hana"
-    }
-  },
-  "sapux": [
-    "app/interaction_items"
-  ]
+    "name": "GMdemo1",
+    "version": "1.0.0",
+    "description": "A simple CAP project.",
+    "repository": "<Add your repository here>",
+    "license": "UNLICENSED",
+    "private": true,
+    "dependencies": {
+        "@sap/cds": "^7",
+        "@sap/cds-hana": "^2",
+        "@sap/xssec": "^3",
+        "express": "^4"
+    },
+    "devDependencies": {
+        "@cap-js/sqlite": "^1",
+        "@sap/cds-dk": "^7",
+        "@sap/ux-specification": "^1.120.4",
+        "rimraf": "^3.0.2"
+    },
+    "scripts": {
+        "start": "cds-serve",
+        "watch-interaction_items": "cds watch --open interaction_items/webapp/index.html?sap-ui-xx-viewCache=false",
+        "watch-items": "cds watch --open items/webapp/index.html?sap-ui-xx-viewCache=false",
+        "undeploy": "cf undeploy GMdemo1 --delete-services --delete-service-keys --delete-service-brokers",
+        "build": "rimraf resources mta_archives && mbt build --mtar archive",
+        "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
+    },
+    "cds": {
+        "requires": {
+            "auth": "xsuaa",
+            "db": "hana"
+        }
+    },
+    "sapux": [
+        "app/interaction_items",
+        "app/items"
+    ]
 }

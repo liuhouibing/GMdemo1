@@ -1,0 +1,6 @@
+@server = http://localhost:4004
+
+@service = /odata/v4/v
+
+GET {{server}}{{service}}/Interaction
+
